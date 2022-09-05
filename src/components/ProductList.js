@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import { Rating } from "@mui/material";
-import { mobile } from "../Responsive";
+import { mobile, tablet } from "../Responsive";
+import { Link } from "react-router-dom";
 
 
 
@@ -29,12 +30,15 @@ const Container = styled.div`
   height: 350px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   background-color: #f5fbfd;
   position: relative;
+  flex-wrap: wrap;
 
   &:hover ${Info} {
     opacity: 1;
+
+    ${tablet({ flexDirection: "column" })}
   }
 `;
 const Circle = styled.div`
@@ -45,10 +49,9 @@ const Circle = styled.div`
   position: absolute;
 `;
 const Image = styled.img`
-  height: 75%;
+  height: 90%;
   z-index: 2;
-  width: 50%;
-  object-fit: contain;
+  /* object-fit: contain; */
   /* max-width:300px; */
   
 `;
@@ -73,9 +76,10 @@ const Icon = styled.div`
 const Details = styled.div`
   font-size: 1rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 6px;
 
-  ${mobile({ flexDirection: "column" })}
+  ${mobile({ flexDirection: "column" ,marginTop:"10px"})}
 `;
 
 const Ratings = styled.div`
@@ -83,7 +87,7 @@ const Ratings = styled.div`
 `;
 
 function ProductList({ item }) {
-  
+  // console.log(item)
   const [value, setValue] = useState(3);
   return (
     <>
@@ -98,16 +102,21 @@ function ProductList({ item }) {
             }
           />
           <Info>
-          <a href={`/singlepage/${item.category}/${item.id}`} style={{color:"black"}}>
+          {/* <a href={`/singlepage/${item.category}/${item.id}`} style={{color:"black"}}>
             <Icon>
               <SearchIcon />
             </Icon>
-            </a>
+            </a> */}
+          <Link to={`/singlepage/${item.category}/${item.id}`} style={{color:"black"}}>
+            <Icon>
+              <SearchIcon />
+            </Icon>
+            </Link>
           </Info>
         </Container>
         <Details>
           <div style={{ letterSpacing: "3px" }}>
-            <h4>{item.title}</h4>
+            <h4 style={{marginBottom:"7px"}}>{item.title}</h4>
             <h4>Rs.{item.price}</h4>
           </div>
           <Ratings>

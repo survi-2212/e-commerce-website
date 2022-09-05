@@ -13,7 +13,6 @@ import { useUserAuth } from "../UserAuthContext";
 import { auth, db } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
-
 const Container = styled.div`
   height: 70px;
   /* width: 100%; */
@@ -141,14 +140,16 @@ function Navbar() {
             </Left>
             {/* Icons */}
             <Right>
-              <MenuItem
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
-              >
-                <Badge badgeContent={0}>
-                  <FavoriteBorderOutlined />
-                </Badge>
-              </MenuItem>
+              <Link to="/wishlist">
+                <MenuItem
+                  onMouseOver={handleMouseOver}
+                  onMouseOut={handleMouseOut}
+                >
+                  <Badge badgeContent={0}>
+                    <FavoriteBorderOutlined />
+                  </Badge>
+                </MenuItem>
+              </Link>
               <Link
                 to="/cart"
                 style={{ color: "black" }}
@@ -226,8 +227,12 @@ function Navbar() {
                 </Link>
               )}
 
-              <Link  to="/wishlist"
-                style={{ color: "black" }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+              <Link
+                to="/wishlist"
+                style={{ color: "black" }}
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}
+              >
                 <MenuItem>
                   <Badge badgeContent={wishlist.length} color="primary">
                     <FavoriteBorderOutlined />

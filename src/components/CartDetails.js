@@ -7,8 +7,6 @@ import { DeleteForeverOutlined } from "@mui/icons-material";
 import { Alert, Button, Snackbar } from "@mui/material";
 import { useUserAuth } from "../UserAuthContext";
 import {
-  addDoc,
-  collection,
   deleteDoc,
   doc,
   updateDoc,
@@ -120,11 +118,13 @@ function CartDetails({ item }) {
   const [open, setOpen] = useState(false);
   const [successMessage, setsuccessMessage] = useState("");
   const [errorMessage, seterrorMessage] = useState("");
+  
+  
   const Price = item.product.price * count;
-
-
+  
   const handleIncrement = async () => {
     setcount(count + 1);
+    
         
 
     const itemRef = doc(db, `cart-${loggedUser[0].uid}`, `${item.id}`);

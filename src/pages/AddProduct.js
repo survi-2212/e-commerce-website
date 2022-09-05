@@ -100,11 +100,13 @@ function AddProduct() {
   const brandNameWomen = ["Max", "Allen solly", "Mark & Spencer","FABALLEY","Mango","Dressberry","PRADA",];
   const brandNameMen = ["Max", "Allen solly", "Levi's","Pepe Jeans","Mango","US polo","Tommy Hilfiger",];
   const brandNameJwellery = ["Tanishq", "Mejuri", "Orra ","Orra ","Almasika","Swarovski"];
-  const color =["Black","Beige","Navy Blue","Maroon","Grey","Off White","Brown","White","Denim","Surplus","Pale Lilac"]
+  const color =["Black","Beige","Navy Blue","Maroon","Grey","Off White","Brown","White","Denim","Surplus","Pale Lilac","Gold","Silver"]
 
   const sizeItem = ["XS", "S", "M", "L", "XL","One-Size"];
 
   const types = ["image/jpg", "image/jpeg", "image/png", "image/PNG"];
+
+  const name = "all";
   const handleImage = (e) => {
     let selectedImage = e.target.files[0];
     // console.log(selectedImage)
@@ -129,13 +131,13 @@ function AddProduct() {
     e.preventDefault();
     const storageRef = ref(
       Storage,
-      `product-Images${category.toUpperCase()}/${Date.now()}`
+      `product-Images${name.toUpperCase()}/${Date.now()}`
     );
     // console.log(storageRef._location.path);
 
     uploadBytes(storageRef, imageFile).then(() => {
       getDownloadURL(storageRef).then((url) => {
-        addDoc(collection(db, `Products-${category.toUpperCase()}`), {
+        addDoc(collection(db, `Products-${name.toUpperCase()}`), {
           title: title,
           brand:brand,
           color:Color,

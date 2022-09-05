@@ -10,7 +10,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { Link } from "react-router-dom";
 import Checkout from "../components/Checkout";
-import { Button } from "@mui/material";
 
 const Container = styled.div``;
 
@@ -30,7 +29,6 @@ const Top = styled.div`
   justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 20px;
- 
 `;
 
 const TopButton = styled.button`
@@ -41,7 +39,7 @@ const TopButton = styled.button`
   background-color: ${(props) =>
     props.type === "filled" ? "black" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
-  ${mobile({ padding:"none" })}
+  ${mobile({ padding: "none" })}
 `;
 
 const TopTexts = styled.div`
@@ -51,19 +49,6 @@ const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
   margin: 0px 10px;
-`;
-
-const CheckoutBtn = styled.button`
-  
-  width: 150px;
-  border: none;
-  background-color: black;
-  padding: 6px;
- 
-  
-  
-
-  ${mobile({ marginTop: "10px", marginBottom: "10px", width: "100%"})}
 `;
 
 function Cart() {
@@ -90,11 +75,11 @@ function Cart() {
         });
     };
     getData();
-  }
+  };
   //  console.log(cartData);
 
+  const total=0
   
-
   return (
     <Container>
       <Announcement />
@@ -103,33 +88,23 @@ function Cart() {
         <Title>YOUR BAG</Title>
         <Top>
           <Link to="/" style={{ textDecoration: "none" }}>
-            
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
           <TopTexts>
             <TopText>Shopping Bag({cartData.length})</TopText>
-            
           </TopTexts>
         </Top>
         {cartData ? (
           <>
             {cartData.map((item) => (
-              <CartDetails item={item} key={item.id}/>
+              <CartDetails item={item} key={item.id} />
             ))}
           </>
         ) : (
           <p>Cart is empty</p>
         )}
-        <CheckoutBtn>
-        <Button
-          variant="outlined"
-          style={{ color: "white",fontWeight:"500", width: "50%", border: "none" }}
-        >
-          Checkout
-        </Button>
-      </CheckoutBtn>
       </Wrapper>
-      
+      {cartData.length > 0 ? <Checkout item={cartData}/> : ""}
       
       <Footer />
     </Container>

@@ -163,6 +163,7 @@ function SinglePage() {
         product,
         size,
         quantity: 1,
+        cost:1
       })
         .then(() => {
           setsuccessMessage("Item added to cart");
@@ -225,6 +226,30 @@ function SinglePage() {
               <Desc>{product.desc}</Desc>
               <span style={{fontSize:"20px"}}>Rs.</span><Price>{product.price}</Price>
               {/* <p>color:{product.color[9]}</p> */}
+
+              
+              {product.category === "jwellery" &&
+              <>
+              <FilterContainer>
+                <Filter>
+                  <FilterTitle>Size</FilterTitle>
+                  <FilterSize
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
+                  >
+                    
+                      <FilterSizeOption>
+                        Select Category
+                      </FilterSizeOption>
+                      <FilterSizeOption>
+                        One Size
+                      </FilterSizeOption>
+                    
+                    
+                  </FilterSize>
+                </Filter>
+              </FilterContainer>
+              </>}
               <FilterContainer>
                 <Filter>
                   <FilterTitle>Size</FilterTitle>
