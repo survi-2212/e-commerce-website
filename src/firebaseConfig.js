@@ -6,12 +6,12 @@ import { getStorage } from "firebase/storage"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBRPrugQZbZROaDPcczriNAHZ0iO-RNTE4",
-  authDomain: "ecommerce-app-f74b8.firebaseapp.com",
-  projectId: "ecommerce-app-f74b8",
-  storageBucket: "ecommerce-app-f74b8.appspot.com",
-  messagingSenderId: "193005014578",
-  appId: "1:193005014578:web:7920ffe7b3e054d97db62b"
+  apiKey: "AIzaSyAyLoH-2IEg_gO07pKQ3oz_ReO-2t4YAQs",
+  authDomain: "bohemian-ecoomerce.firebaseapp.com",
+  projectId: "bohemian-ecoomerce",
+  storageBucket: "bohemian-ecoomerce.appspot.com",
+  messagingSenderId: "381732445299",
+  appId: "1:381732445299:web:600203823f13809c7f9e06"
 };
 
 // Initialize Firebase

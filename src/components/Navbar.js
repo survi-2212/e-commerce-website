@@ -140,7 +140,7 @@ function Navbar() {
             </Left>
             {/* Icons */}
             <Right>
-              <Link to="/wishlist">
+              <Link to="/wishlist" style={{ color: "black" }}>
                 <MenuItem
                   onMouseOver={handleMouseOver}
                   onMouseOut={handleMouseOut}

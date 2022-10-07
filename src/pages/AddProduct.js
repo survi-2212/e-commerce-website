@@ -131,13 +131,13 @@ function AddProduct() {
     e.preventDefault();
     const storageRef = ref(
       Storage,
-      `product-Images${name.toUpperCase()}/${Date.now()}`
+      `product-Images${category.toUpperCase()}/${Date.now()}`
     );
     // console.log(storageRef._location.path);
 
     uploadBytes(storageRef, imageFile).then(() => {
       getDownloadURL(storageRef).then((url) => {
-        addDoc(collection(db, `Products-${name.toUpperCase()}`), {
+        addDoc(collection(db, `Products-${category.toUpperCase()}`), {
           title: title,
           brand:brand,
           color:Color,
